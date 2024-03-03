@@ -4,6 +4,7 @@ import { League } from '../classes/league';
 import { Name } from '../classes/name';
 import { PersistenceService } from './persistence.service';
 import { RoundSerialiserService } from './round-serialiser.service';
+import { Round } from '../classes/round';
 
 @Injectable()
 export class RoundFactory {
@@ -15,7 +16,7 @@ export class RoundFactory {
     this.roundSerialiserService = roundSerialiserService;
   }
 
-  public evenDistribution(size: number, league: League): Array<HeadToHead> {
+  public evenDistribution(size: number, league: League): Round {
     const out: Array<HeadToHead> = [];
     const count: number = Math.ceil(league.names.length / size);
     const names: Array<Name> = league.ranking();
@@ -34,10 +35,10 @@ export class RoundFactory {
       out.push(new HeadToHead(headToHead));
     }
 
-    return out;
+    return new Round(out);
   }
 
-  public restore(league: League): Array<HeadToHead> | null {
+  public restore(league: League): Round | null {
     const serialised: string | null = this.persistenceService.load('round');
 
     if (serialised === null || serialised === '') {
@@ -47,7 +48,7 @@ export class RoundFactory {
     return this.roundSerialiserService.deserialise(serialised, league);
   }
 
-  public store(round: Array<HeadToHead>): void {
+  public store(round: Round): void {
     this.persistenceService.save('round', this.roundSerialiserService.serialise(round));
   }
 }

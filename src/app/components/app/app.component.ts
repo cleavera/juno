@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { League } from '../../classes/league';
+import { Round } from '../../classes/round';
 import { LeagueFactory } from '../../services/league.factory';
-import { RankingComponent } from '../ranking/ranking.component';
-import { HeadToHead } from '../../classes/head-to-head';
 import { RoundFactory } from '../../services/round.factory';
 import { LeagueComponent } from '../league/league.component';
+import { RankingComponent } from '../ranking/ranking.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,7 +16,7 @@ import { LeagueComponent } from '../league/league.component';
 })
 export class AppComponent {
   public league: League;
-  public round: Array<HeadToHead>;
+  public round: Round;
 
   private readonly _leagueFactory: LeagueFactory;
   private readonly _roundFactory: RoundFactory;
@@ -31,10 +31,8 @@ export class AppComponent {
   public onComplete(): void {
     this._leagueFactory.store(this.league);
 
-    if (this.round.length === 1) {
+    if (this.round.isComplete()) {
       this.round = this._roundFactory.evenDistribution(10, this.league);
-    } else {
-      this.round.shift();
     }
 
     this._roundFactory.store(this.round);

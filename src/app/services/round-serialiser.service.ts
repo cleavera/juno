@@ -1,28 +1,30 @@
 import { Injectable } from '@angular/core';
-import { League } from '../classes/league';
-import { Name } from '../classes/name';
 import { HeadToHead } from '../classes/head-to-head';
-import { capitalise } from '../helpers/capitalise.helper';
+import { League } from '../classes/league';
+import { Round } from '../classes/round';
+import { HeadToHeadSerialiserService } from './head-to-head-serialiser.service';
 
 @Injectable()
 export class RoundSerialiserService {
-  public deserialise(serialised: string, league: League): Array<HeadToHead> | null {
+  private readonly _headToHeadSerialiserService: HeadToHeadSerialiserService;
+
+  constructor(headToHeadSerialiserService: HeadToHeadSerialiserService) {
+    this._headToHeadSerialiserService = headToHeadSerialiserService;
+  }
+
+  public deserialise(serialised: string, league: League): Round | null {
     if (serialised === '') {
       throw new Error('Empty round');
     }
 
-    return serialised.split(';').map((roundString: string) => {
-      return new HeadToHead(roundString.split(':').map((name: string) => {
-        return league.find(capitalise(name))!;
-      }));
-    });
+    return new Round(serialised.split(';').map((roundString: string) => {
+      return this._headToHeadSerialiserService.deserialise(roundString, league);
+    }));
   }
 
-  public serialise(round: Array<HeadToHead>): string {
-    return round.map((headToHead: HeadToHead) => {
-      return headToHead.names.map((name: Name) => {
-        return name.name.toLowerCase();
-      }).join(':');
+  public serialise(round: Round): string {
+    return round.headToHeads.map((headToHead: HeadToHead) => {
+      return this._headToHeadSerialiserService.serialise(headToHead);
     }).join(';');
   }
 }

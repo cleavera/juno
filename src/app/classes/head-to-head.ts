@@ -2,9 +2,11 @@ import { Name } from './name';
 
 export class HeadToHead {
   public names: Array<Name>;
+  public result: Array<Name> | null = null;
 
-  constructor(names: Array<Name>) {
+  constructor(names: Array<Name>, result: Array<Name> | null = null) {
     this.names = names;
+    this.result = result;
   }
 
   public resolve(names: Array<Name>): void {
@@ -25,6 +27,10 @@ export class HeadToHead {
       });
 
       this.find(name.name)!.rating += adjustment;
+    });
+
+    this.result = names.map((name: Name) => {
+      return this.find(name.name)!;
     });
   }
 
