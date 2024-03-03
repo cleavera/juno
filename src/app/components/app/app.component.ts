@@ -4,11 +4,11 @@ import { Round } from '../../classes/round';
 import { LeagueFactory } from '../../services/league.factory';
 import { RoundFactory } from '../../services/round.factory';
 import { LeagueComponent } from '../league/league.component';
-import { RankingComponent } from '../ranking/ranking.component';
+import { RoundComponent } from '../round/round.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LeagueComponent, RankingComponent],
+  imports: [LeagueComponent, RoundComponent],
   selector: 'app-root',
   standalone: true,
   styleUrls: ['./app.component.css'],
@@ -26,15 +26,5 @@ export class AppComponent {
     this._roundFactory = roundFactory;
     this.league = this._leagueFactory.restore();
     this.round = this._roundFactory.restore(this.league) ?? this._roundFactory.evenDistribution(10, this.league);
-  }
-
-  public onComplete(): void {
-    this._leagueFactory.store(this.league);
-
-    if (this.round.isComplete()) {
-      this.round = this._roundFactory.evenDistribution(10, this.league);
-    }
-
-    this._roundFactory.store(this.round);
   }
 }

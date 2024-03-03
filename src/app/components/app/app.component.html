@@ -1,6 +1,6 @@
-<app-ranking
-    [headToHead]="round.nextMatchup()!"
-    (complete)="onComplete()" />
+<app-round
+  [round]="round"
+  [league]="league" />
 
 <app-league
     [league]="league" />

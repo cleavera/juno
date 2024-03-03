@@ -7,6 +7,7 @@ import { capitalise } from '../helpers/capitalise.helper';
 export class LeagueSerialiserService {
   public deserialise(serialised: string): League {
     const names: Array<Name> = serialised.split(';').map((name: string) => this._deserialiseName(name));
+
     return new League(names);  
   }
 
