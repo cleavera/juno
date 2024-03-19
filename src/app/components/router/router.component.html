@@ -1,0 +1,10 @@
+<app-navigation-bar (navigate)="onNavigate($event)" />
+
+<app-round
+    *ngIf="isRound()"
+    [round]="round"
+    [league]="league" />
+
+<app-league
+    *ngIf="isLeague()"
+    [league]="league" />

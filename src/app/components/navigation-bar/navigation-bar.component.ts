@@ -1,0 +1,21 @@
+import { Component, EventEmitter, Output } from '@angular/core';
+import { States } from '../../constants/states.constant';
+
+@Component({
+  selector: 'app-navigation-bar',
+  standalone: true,
+  styleUrls: ['./navigation-bar.component.css'],
+  templateUrl: './navigation-bar.component.html'
+})
+export class NavigationBarComponent {
+  @Output()
+  public navigate: EventEmitter<States> = new EventEmitter();
+
+  public onRound(): void {
+    this.navigate.emit(States.ROUND);
+  }
+
+  public onLeague(): void {
+    this.navigate.emit(States.LEAGUE);
+  }
+}
