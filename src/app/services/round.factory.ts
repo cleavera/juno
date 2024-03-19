@@ -2,9 +2,9 @@ import { Injectable, inject } from '@angular/core';
 import { HeadToHead } from '../classes/head-to-head';
 import { League } from '../classes/league';
 import { Name } from '../classes/name';
+import { Round } from '../classes/round';
 import { PersistenceService } from './persistence.service';
 import { RoundSerialiserService } from './round-serialiser.service';
-import { Round } from '../classes/round';
 
 @Injectable()
 export class RoundFactory {

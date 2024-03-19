@@ -1,6 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
-import { Round } from '../../classes/round';
 import { League } from '../../classes/league';
+import { Round } from '../../classes/round';
 import { LeagueFactory } from '../../services/league.factory';
 import { RoundFactory } from '../../services/round.factory';
 import { RankingComponent } from '../ranking/ranking.component';
