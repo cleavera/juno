@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HeadToHead } from '../classes/head-to-head';
 import { League } from '../classes/league';
 import { Name } from '../classes/name';
@@ -8,13 +8,8 @@ import { Round } from '../classes/round';
 
 @Injectable()
 export class RoundFactory {
-  private readonly persistenceService: PersistenceService;
-  private readonly roundSerialiserService: RoundSerialiserService;
-
-  constructor(persistenceService: PersistenceService, roundSerialiserService: RoundSerialiserService) {
-    this.persistenceService = persistenceService;
-    this.roundSerialiserService = roundSerialiserService;
-  }
+  private readonly persistenceService: PersistenceService = inject(PersistenceService);
+  private readonly roundSerialiserService: RoundSerialiserService = inject(RoundSerialiserService);
 
   public evenDistribution(size: number, league: League): Round {
     const out: Array<HeadToHead> = [];

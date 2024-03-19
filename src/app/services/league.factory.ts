@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { League } from '../classes/league';
 import { Name } from '../classes/name';
@@ -8,13 +8,8 @@ import { PersistenceService } from './persistence.service';
 
 @Injectable()
 export class LeagueFactory {
-  private readonly persistenceService: PersistenceService;
-  private readonly serialiserService: LeagueSerialiserService;
-
-  constructor(persistenceService: PersistenceService, serialiserService: LeagueSerialiserService) {
-    this.persistenceService = persistenceService;
-    this.serialiserService = serialiserService;  
-  }
+  private readonly persistenceService: PersistenceService = inject(PersistenceService);
+  private readonly serialiserService: LeagueSerialiserService = inject(LeagueSerialiserService);
 
   public fresh(): League {
     return new League(NAMES.map((name: string) => new Name(name, 1500, 0)));

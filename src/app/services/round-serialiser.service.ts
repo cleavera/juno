@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HeadToHead } from '../classes/head-to-head';
 import { League } from '../classes/league';
 import { Round } from '../classes/round';
@@ -6,11 +6,7 @@ import { HeadToHeadSerialiserService } from './head-to-head-serialiser.service';
 
 @Injectable()
 export class RoundSerialiserService {
-  private readonly _headToHeadSerialiserService: HeadToHeadSerialiserService;
-
-  constructor(headToHeadSerialiserService: HeadToHeadSerialiserService) {
-    this._headToHeadSerialiserService = headToHeadSerialiserService;
-  }
+  private readonly _headToHeadSerialiserService: HeadToHeadSerialiserService = inject(HeadToHeadSerialiserService);
 
   public deserialise(serialised: string, league: League): Round | null {
     if (serialised === '') {

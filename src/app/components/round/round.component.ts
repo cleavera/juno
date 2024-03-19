@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Round } from '../../classes/round';
 import { League } from '../../classes/league';
 import { LeagueFactory } from '../../services/league.factory';
@@ -19,13 +19,8 @@ export class RoundComponent {
   @Input({ required: true })
   public league!: League;
 
-  private readonly _leagueFactory: LeagueFactory;
-  private readonly _roundFactory: RoundFactory;
-
-  constructor(leagueFactory: LeagueFactory, roundFactory: RoundFactory) {
-    this._leagueFactory = leagueFactory;
-    this._roundFactory = roundFactory;
-  }
+  private readonly _leagueFactory: LeagueFactory = inject(LeagueFactory);
+  private readonly _roundFactory: RoundFactory = inject(RoundFactory);
 
   public onComplete(): void {
     this._leagueFactory.store(this.league);
