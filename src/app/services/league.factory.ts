@@ -8,6 +8,7 @@ import { PersistenceService } from './persistence.service';
 
 @Injectable()
 export class LeagueFactory {
+  private static readonly STORAGE_KEY: string = 'league';
   private readonly persistenceService: PersistenceService = inject(PersistenceService);
   private readonly serialiserService: LeagueSerialiserService = inject(LeagueSerialiserService);
 
@@ -16,7 +17,7 @@ export class LeagueFactory {
   }
   
   public restore(): League {
-    const serialised: string | null = this.persistenceService.load('league');
+    const serialised: string | null = this.persistenceService.load(LeagueFactory.STORAGE_KEY);
 
     if (serialised === null) {
       return this.fresh();
@@ -26,6 +27,6 @@ export class LeagueFactory {
   }
 
   public store(league: League): void {
-    this.persistenceService.save('league', this.serialiserService.serialise(league));
+    this.persistenceService.save(LeagueFactory.STORAGE_KEY, this.serialiserService.serialise(league));
   }
 }

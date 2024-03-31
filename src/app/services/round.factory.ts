@@ -5,9 +5,12 @@ import { Name } from '../classes/name';
 import { Round } from '../classes/round';
 import { PersistenceService } from './persistence.service';
 import { RoundSerialiserService } from './round-serialiser.service';
+import { shuffle } from '../helpers/randomise.helper';
+import { RoundType } from '../constants/round-type.constant';
 
 @Injectable()
 export class RoundFactory {
+  private static readonly STORAGE_KEY: string = 'round';
   private readonly persistenceService: PersistenceService = inject(PersistenceService);
   private readonly roundSerialiserService: RoundSerialiserService = inject(RoundSerialiserService);
 
@@ -30,20 +33,73 @@ export class RoundFactory {
       out.push(new HeadToHead(headToHead));
     }
 
-    return new Round(out);
+    return new Round(out, RoundType.EVEN_DISTRIBUTION);
+  }
+
+  public faceOff(roundCount: number, league: League): Round {
+    roundCount = Math.min(roundCount, league.names.length / 2);
+
+    const indexes: Array<number> = shuffle([...Array(roundCount).keys()]);
+    const names: Array<Name> = league.ranking();
+    const out: Array<HeadToHead> = [];
+
+    for (let i = 0; i < indexes.length; i += 2) {
+      out.push(new HeadToHead([names[indexes[i]], names[indexes[i + 1]]]));
+    }
+
+    return new Round(out, RoundType.FACEOFF);
+  }
+
+  public weightedDistribution(roundCount: number, league: League): Round {
+    roundCount = Math.min(roundCount, Math.floor(league.names.length / 30));
+
+    const g1: Array<Name> = shuffle(league.ranking().slice(0, roundCount * 2));
+    const g2: Array<Name> = shuffle(league.ranking().slice(roundCount * 2, (roundCount * (2 + 4))));
+    const g3: Array<Name> = shuffle(league.ranking().slice((roundCount * (2 + 4)), (roundCount * (2 + 4 + 6))));
+    const g4: Array<Name> = shuffle(league.ranking().slice((roundCount * (2 + 4 + 6)), league.names.length));
+
+    const out: Array<HeadToHead> = [];
+
+    for (let i = 0; i < (roundCount * 2); i += 2) {
+      const j: number = i + 1;
+
+      out.push(new HeadToHead([g1[i], g1[j], g2[i], g2[j], g3[i], g3[j], g4[i], g4[j]]));
+    }
+
+    return new Round(out, RoundType.WEIGHTED_DISTRIBUTION);
+  }
+
+  public next(league: League): Round {
+    const index = league.rounds % 5;
+    console.log(index);
+
+    switch (index) {
+      case 0:
+        return this.evenDistribution(10, league);
+      case 1:
+        return this.weightedDistribution(30, league);
+      case 2:
+        return this.faceOff(100, league);
+      case 3:
+        return this.weightedDistribution(20, league);
+      case 4:
+        return this.faceOff(50, league);
+      default:
+        throw new Error('Invalid round index');
+    }
   }
 
   public restore(league: League): Round | null {
-    const serialised: string | null = this.persistenceService.load('round');
+    const serialised: string | null = this.persistenceService.load(RoundFactory.STORAGE_KEY);
 
     if (serialised === null || serialised === '') {
-      return this.evenDistribution(10, league);
+      return null;
     }
 
     return this.roundSerialiserService.deserialise(serialised, league);
   }
 
   public store(round: Round): void {
-    this.persistenceService.save('round', this.roundSerialiserService.serialise(round));
+    this.persistenceService.save(RoundFactory.STORAGE_KEY, this.roundSerialiserService.serialise(round));
   }
 }

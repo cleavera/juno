@@ -28,7 +28,7 @@ export class RouterComponent {
 
   public ngOnInit() {
     this.league = this._leagueFactory.restore();
-    this.round = this._roundFactory.restore(this.league) ?? this._roundFactory.evenDistribution(10, this.league);
+    this.round = this._roundFactory.restore(this.league) ?? this._roundFactory.next(this.league);
   }
 
   public onNavigate(state: States): void {

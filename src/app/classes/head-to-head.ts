@@ -18,12 +18,11 @@ export class HeadToHead {
           return;
         }
 
-        if (index > otherIndex) {
+        if (index < otherIndex) {
           adjustment += this.ratingAdjustment(name, other, 1);
         } else {
           adjustment += this.ratingAdjustment(name, other, 0);
         }
-
       });
 
       this.find(name.name)!.rating += adjustment;
