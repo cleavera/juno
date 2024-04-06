@@ -1,0 +1,11 @@
+<ul *ngIf="combinations; else import">
+  <li *ngFor="let combination of combinations">
+    <p>{{combination.myRating}}</p>
+    <p>{{combination.name}}</p>
+    <p>{{combination.theirRating}}</p>
+  </li>
+</ul>
+
+<ng-template #import>
+  <app-comparison-import (import)="onImport($event)" />
+</ng-template>

@@ -6,9 +6,11 @@ import { LeagueFactory } from './app/services/league.factory';
 import { PersistenceService } from './app/services/persistence.service';
 import { RoundSerialiserService } from './app/services/round-serialiser.service';
 import { RoundFactory } from './app/services/round.factory';
+import { CombineFactory } from './app/services/combine.factory';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    CombineFactory,
     HeadToHeadSerialiserService,
     LeagueFactory,
     LeagueSerialiserService,

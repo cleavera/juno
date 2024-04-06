@@ -18,4 +18,8 @@ export class NavigationBarComponent {
   public onLeague(): void {
     this.navigate.emit(States.LEAGUE);
   }
+
+  public onComparison(): void {
+    this.navigate.emit(States.COMPARISON);
+  }
 }

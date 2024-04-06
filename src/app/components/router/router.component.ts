@@ -5,13 +5,14 @@ import { Round } from '../../classes/round';
 import { States } from '../../constants/states.constant';
 import { LeagueFactory } from '../../services/league.factory';
 import { RoundFactory } from '../../services/round.factory';
+import { ComparisonComponent } from '../comparison/comparison.component';
 import { LeagueComponent } from '../league/league.component';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { RoundComponent } from '../round/round.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LeagueComponent, NavigationBarComponent, NgIf, RoundComponent],
+  imports: [ComparisonComponent, LeagueComponent, NavigationBarComponent, NgIf, RoundComponent],
   selector: 'app-router',
   standalone: true,
   styleUrls: ['./router.component.css'],
@@ -41,5 +42,9 @@ export class RouterComponent {
 
   public isLeague(): boolean {
     return this.state === States.LEAGUE;
+  }
+
+  public isComparison(): boolean {
+    return this.state === States.COMPARISON;
   }
 }
