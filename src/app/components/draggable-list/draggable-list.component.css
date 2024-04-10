@@ -1,25 +1,58 @@
-.example-list {
-  background: var(--color-sortableBackdrop, #eee);
-  border: solid 1px var(--color-borders, #ccc);
-  display: block;
-  margin: 0;
-  min-height: 60px;
-  padding: 0;
-  width: 100%;
+:host {
+  display: flex;
+  flex-direction: column;
 }
 
-.example-box {
-  padding: 20px 10px;
-  border-bottom: solid 1px var(--color-borders, #ccc);
-  color: rgba(0, 0, 0, 0.87);
+.list {
+  background: var(--color-draggableListBackdrop);
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
+  flex: 1 1 auto;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  align-items: stretch;
+  color: var(--color-font);
   cursor: move;
-  background: var(--color-sortableItem, #fff);
-  font-size: 14px;
+  display: flex;
+  flex: 1 0 auto;
+  font-size: 1.5rem;
+  justify-content: flex-start;
+}
+
+.item & .item {
+  border-top: 1px solid var(--color-border);
+}
+
+.item::before {
+  background: var(--color-draggableListItem);
+  content: '';
+  width: 1rem;
+}
+
+.label {
+  align-items: center;
+  background: var(--color-draggableListItem);
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: center;
+  margin: 0;
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 0.5rem;
+}
+
+.indicator::before,
+.indicator::after {
+  background: var(--color-draggableListItem);
+  content: '';
+  flex: 0 1 20%;
 }
 
 .cdk-drag-preview {
@@ -38,10 +71,6 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.example-box:last-child {
-  border: none;
-}
-
-.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+.list.cdk-drop-list-dragging .item:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

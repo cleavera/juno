@@ -1,14 +1,17 @@
 <app-navigation-bar (navigate)="onNavigate($event)" />
 
 <app-round
+    class="round"
     *ngIf="isRound()"
     [round]="round"
     [league]="league" />
 
 <app-league
+    class="league"
     *ngIf="isLeague()"
     [league]="league" />
 
 <app-comparison
+    class="comparison"
     *ngIf="isComparison()"
     [league]="league" />

@@ -1,7 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { States } from '../../constants/states.constant';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [LogoComponent],
   selector: 'app-navigation-bar',
   standalone: true,
   styleUrls: ['./navigation-bar.component.css'],

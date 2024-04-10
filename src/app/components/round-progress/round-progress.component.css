@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+}
+
+:host::before {
+  background: var(--color-progress);
+  content: '';
+  display: block;
+  width: var(--progress);
+}

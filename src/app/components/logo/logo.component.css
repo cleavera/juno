@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.logo {
+  fill: var(--color-logo);
+}

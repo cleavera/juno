@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.progress {
+  height: 10px;
+}
+
+.ranking,
+.faceOff {
+  flex: 1 1 auto;
+}
