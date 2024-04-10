@@ -22,8 +22,8 @@
   --color-draggableListItem: var(--color-white);
   --color-draggableListBackdrop: linear-gradient(var(--color-primary), var(--color-off-white));
 
-  --color-help: var(--color-blue);
-  --color-help-font: var(--color-off-white);
+  --color-info: var(--color-blue);
+  --color-info-font: var(--color-off-white);
 
   --color-logo: var(--color-off-white);
 

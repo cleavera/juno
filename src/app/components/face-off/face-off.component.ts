@@ -1,9 +1,11 @@
 import { Component, ChangeDetectionStrategy, EventEmitter, Input, Output } from '@angular/core';
 import { HeadToHead } from '../../classes/head-to-head';
 import { Name } from '../../classes/name';
+import { InfoComponent } from '../info/info.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [InfoComponent],
   selector: 'app-face-off',
   standalone: true,
   styleUrls: ['./face-off.component.css'],

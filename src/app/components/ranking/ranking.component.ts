@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HeadToHead } from '../../classes/head-to-head';
 import { Name } from '../../classes/name';
 import { DraggableList } from '../draggable-list/draggable-list.component';
+import { InfoComponent } from '../info/info.component';
 
 @Component({
-  imports: [DraggableList],
+  imports: [DraggableList, InfoComponent],
   selector: 'app-ranking',
   standalone: true,
   styleUrls: ['./ranking.component.css'],
