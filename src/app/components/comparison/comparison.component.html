@@ -2,9 +2,9 @@
   @for (combination of comparison.combinations; track combination) {
     <li class="combination">
       <span class="indicator" role="presentation"></span>
-      <p class="myRating">{{combination.myRating}}</p>
+      <app-combination-value class="myRating" [isMine]="true" [minRating]="comparison.min" [maxRating]="comparison.max" [rating]="combination.myRating" />
       <p class="name">{{combination.name}}</p>
-      <p class="theirRating">{{combination.theirRating}}</p>
+      <app-combination-value class="theirRating" [minRating]="comparison.min" [maxRating]="comparison.max" [rating]="combination.theirRating" />
     </li>
   }
 </ol>

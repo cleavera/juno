@@ -22,6 +22,8 @@
 
   --color-comparisonItem: var(--color-white);
   --color-comparisonBackdrop: linear-gradient(var(--color-primary), var(--color-off-white));
+  --color-comparisonMyRating: linear-gradient(30deg, var(--color-secondary), var(--color-primary));
+  --color-comparisonTheirRating: linear-gradient(-30deg, var(--color-secondary), var(--color-primary));
 
   --color-draggableListItem: var(--color-white);
   --color-draggableListBackdrop: linear-gradient(var(--color-primary), var(--color-off-white));

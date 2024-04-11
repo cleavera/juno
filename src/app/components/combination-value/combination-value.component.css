@@ -1,0 +1,54 @@
+:host {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  position: relative;
+}
+
+:host.isMine {
+  justify-content: flex-end;
+}
+
+:host::before {
+  background: var(--color-comparisonTheirRating);
+  bottom: 5px;
+  content: '';
+  left: 5px;
+  position: absolute;
+  right: unset;
+  top: 5px;
+  width: calc((((var(--rating) - var(--minRating)) / (var(--maxRating) - var(--minRating))) * 100%) - 10px);
+}
+
+:host.isMine::before {
+  background: var(--color-comparisonMyRating);
+  left: unset;
+  right: 5px;
+}
+
+:host::after {
+  background: linear-gradient(90deg, rgba(0,0,0,0.1), rgba(0,0,0,0));
+  bottom: 5px;
+  content: '';
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+}
+
+:host.isMine::after {
+  background: linear-gradient(270deg, rgba(0,0,0,0.1), rgba(0,0,0,0));
+}
+
+.label {
+  color: var(--color-font-invert);
+  font-weight: bold;
+  margin: 0;
+  position: relative;
+  text-shadow: 
+    1px 1px 0 var(--color-font),
+    1px -1px 0 var(--color-font),
+    -1px -1px 0 var(--color-font),
+    -1px 1px 0 var(--color-font);
+  z-index: 1;
+}
