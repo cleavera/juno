@@ -1,2 +1,3 @@
-<textarea #import></textarea>
-<button (click)="onImport(import)">Import</button>
+<app-info message="Import your partner's league" />
+<textarea #import></textarea> 
+<app-action-button text="Import" (activate)="onImport(import)" />

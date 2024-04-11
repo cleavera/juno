@@ -12,6 +12,7 @@
 
   --color-blue: #A88ADB;
   
+  --color-font: var(--color-dark-grey);
   --color-font-invert: var(--color-off-white);
   --color-font-hover: var(--color-blue);
   --color-continue: linear-gradient(30deg, var(--color-secondary), var(--color-primary));
@@ -37,6 +38,7 @@
 }
 
 body {
+  color: var(--color-font);
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;

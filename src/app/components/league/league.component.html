@@ -1,6 +1,10 @@
 <app-league-export [league]="league" />
-<ul>
+<ol>
   @for (item of league.ranking(); track item) {
-    <li>{{item.name}} - {{item.rating}}</li>
+    <li class="item">
+      <span class="indicator" role="presentation"></span>
+      <span class="name">{{item.name}}</span>
+      <span class="rating">{{item.rating}}</span>
+    </li>
   }
-</ul>
+</ol>

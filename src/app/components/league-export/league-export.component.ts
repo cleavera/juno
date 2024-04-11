@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { League } from '../../classes/league';
 import { LeagueSerialiserService } from '../../services/league-serialiser.service';
+import { ActionButtonComponent } from '../action-button/action-button.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ActionButtonComponent],
   selector: 'app-league-export',
   standalone: true,
   styleUrls: ['./league-export.component.css'],

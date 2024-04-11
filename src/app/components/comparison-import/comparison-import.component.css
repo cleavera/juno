@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+textarea {
+  flex: 1 1 auto;
+  margin: 10px 0;
+  resize: none;
+}

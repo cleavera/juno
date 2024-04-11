@@ -1,10 +1,12 @@
-<ul *ngIf="combinations; else import">
-  <li *ngFor="let combination of combinations">
-    <p>{{combination.myRating}}</p>
-    <p>{{combination.name}}</p>
-    <p>{{combination.theirRating}}</p>
-  </li>
-</ul>
+<ol *ngIf="combinations; else import">
+  @for (combination of combinations; track combination) {
+    <li>
+      <p>{{combination.myRating}}</p>
+      <p>{{combination.name}}</p>
+      <p>{{combination.theirRating}}</p>
+    </li>
+  }
+</ol>
 
 <ng-template #import>
   <app-comparison-import (import)="onImport($event)" />

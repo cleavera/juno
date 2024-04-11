@@ -1,9 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output, inject } from '@angular/core';
 import { League } from '../../classes/league';
 import { LeagueSerialiserService } from '../../services/league-serialiser.service';
+import { InfoComponent } from '../info/info.component';
+import { ActionButtonComponent } from '../action-button/action-button.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ActionButtonComponent, InfoComponent],
   selector: 'app-comparison-import',
   standalone: true,
   styleUrls: ['./comparison-import.component.css'],

@@ -3,6 +3,7 @@
   flex-direction: column;
 }
 
-.round {
+.round,
+.comparison {
   flex: 1 1 auto;
 }

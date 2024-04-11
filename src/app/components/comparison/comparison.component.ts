@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { Combination } from '../../classes/combination';
 import { League } from '../../classes/league';
@@ -7,7 +7,7 @@ import { ComparisonImportComponent } from '../comparison-import/comparison-impor
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ComparisonImportComponent, NgFor, NgIf],
+  imports: [ComparisonImportComponent, NgIf],
   selector: 'app-comparison',
   standalone: true,
   styleUrls: ['./comparison.component.css'],
