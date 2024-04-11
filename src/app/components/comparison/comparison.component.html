@@ -1,5 +1,5 @@
-<ol *ngIf="combinations; else import">
-  @for (combination of combinations; track combination) {
+<ol *ngIf="comparison; else import">
+  @for (combination of comparison.combinations; track combination) {
     <li>
       <p>{{combination.myRating}}</p>
       <p>{{combination.name}}</p>
