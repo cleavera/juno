@@ -20,8 +20,14 @@
 
   --color-shadow: var(--color-mid-grey);
 
+  --color-comparisonItem: var(--color-white);
+  --color-comparisonBackdrop: linear-gradient(var(--color-primary), var(--color-off-white));
+
   --color-draggableListItem: var(--color-white);
   --color-draggableListBackdrop: linear-gradient(var(--color-primary), var(--color-off-white));
+
+  --color-leagueItem: var(--color-white);
+  --color-leagueBackdrop: linear-gradient(var(--color-primary), var(--color-off-white));
 
   --color-info: var(--color-blue);
   --color-info-font: var(--color-off-white);
