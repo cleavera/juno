@@ -3,6 +3,8 @@
   box-shadow: 0 0 5px var(--color-shadow);
   color: var(--color-navigation-font);
   display: flex;
+  position: sticky;
+  top: 0;
 }
 
 :host::before {
