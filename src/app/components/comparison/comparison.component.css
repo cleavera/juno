@@ -1,8 +1,78 @@
 :host {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 app-comparison-import {
   flex: 1 1 auto;
+}
+
+.combinations {
+  background: var(--color-draggableListBackdrop);
+  counter-reset: section;
+  margin: 0;
+  padding: 0;
+}
+
+.combination::before {
+  align-items: center;
+  background: var(--color-draggableListItem);
+  counter-increment: section;
+  content: counter(section);
+  display: flex;
+  flex: 0 1 20px;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.combination + .combination {
+  border-top: 1px solid var(--color-dividers);
+}
+
+.combination {
+  display: flex;
+}
+
+.name {
+  align-items: center;
+  background: var(--color-draggableListItem);
+  display: flex;
+  flex: 2;
+  font-size: 1.5rem;
+  justify-content: center;
+  margin: 0;
+}
+
+.myRating,
+.theirRating {
+  align-items: center;
+  background: var(--color-draggableListItem);
+  display: flex;
+  flex: 1;
+  margin: 0;
+}
+
+.myRating {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.theirRating {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 0.5rem;
+}
+
+.indicator::before,
+.indicator::after {
+  background: var(--color-draggableListItem);
+  content: '';
+  flex: 0 1 20%;
 }

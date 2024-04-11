@@ -1,9 +1,10 @@
-<ol *ngIf="comparison; else import">
+<ol *ngIf="comparison; else import" class="combinations">
   @for (combination of comparison.combinations; track combination) {
-    <li>
-      <p>{{combination.myRating}}</p>
-      <p>{{combination.name}}</p>
-      <p>{{combination.theirRating}}</p>
+    <li class="combination">
+      <span class="indicator" role="presentation"></span>
+      <p class="myRating">{{combination.myRating}}</p>
+      <p class="name">{{combination.name}}</p>
+      <p class="theirRating">{{combination.theirRating}}</p>
     </li>
   }
 </ol>
