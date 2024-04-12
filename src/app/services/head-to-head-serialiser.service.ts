@@ -19,7 +19,7 @@ export class HeadToHeadSerialiserService {
       const name: Name = league.find(capitalise(nameString))!;
 
       names.push(name);
-      
+
       if (rank !== '~') {
         result[parseInt(rank, 10)] = name;
       }
@@ -33,14 +33,16 @@ export class HeadToHeadSerialiserService {
   }
 
   public serialise(headToHead: HeadToHead): string {
-    if (headToHead.result === null) {
+    const result: ReadonlyArray<Name> | null = headToHead.result();
+
+    if (result === null) {
       return headToHead.names.map((name: Name) => {
         return `${name.name.toLowerCase()}#~`;
       }).join(':');
     }
 
-      return headToHead.result.map((name: Name, index: number) => {
-        return `${name.name.toLowerCase()}#${index}`;
-      }).join(':');
+    return result.map((name: Name, index: number) => {
+      return `${name.name.toLowerCase()}#${index}`;
+    }).join(':');
   }
 }

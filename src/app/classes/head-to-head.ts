@@ -1,12 +1,13 @@
+import { WritableSignal, signal } from '@angular/core';
 import { Name } from './name';
 
 export class HeadToHead {
   public names: ReadonlyArray<Name>;
-  public result: ReadonlyArray<Name> | null = null;
+  public result: WritableSignal<ReadonlyArray<Name> | null>;
 
   constructor(names: ReadonlyArray<Name>, result: ReadonlyArray<Name> | null = null) {
     this.names = names;
-    this.result = result;
+    this.result = signal(result);
   }
 
   public resolve(names: ReadonlyArray<Name>): void {
@@ -30,9 +31,9 @@ export class HeadToHead {
       centralName.plays.update((plays: number) => plays + 1);
     });
 
-    this.result = names.map((name: Name) => {
+    this.result.set(names.map((name: Name) => {
       return this.find(name.name)!;
-    });
+    }));
   }
 
   public find(name: string): Name | null {

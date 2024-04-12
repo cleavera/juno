@@ -1,9 +1,8 @@
-import { ChangeDetectorRef, Component, HostBinding, Input } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { interval } from 'rxjs';
+import { Component, Input, Signal, computed } from '@angular/core';
 import { Round } from '../../classes/round';
 
 @Component({
+  host: { '[style.--progress]': 'progress()' },
   selector: 'app-round-progress',
   standalone: true,
   styleUrls: ['./round-progress.component.css'],
@@ -13,13 +12,9 @@ export class RoundProgressComponent {
   @Input({ required: true })
   public round!: Round;
 
-  @HostBinding('style.--progress')
-  public progress!: string;
+  public progress: Signal<string>;
 
-  constructor(changeDetectorRef: ChangeDetectorRef) {
-    interval(500).pipe(takeUntilDestroyed()).subscribe(() => {
-      this.progress = `${Math.floor(this.round.progress() * 100)}%`;
-      changeDetectorRef.markForCheck();
-    });
+  constructor() {
+    this.progress = computed(() => `${Math.floor(this.round.progress() * 100)}%`);
   }
 }
