@@ -15,3 +15,7 @@
   height: 4.5rem;
   justify-content: center;
 }
+
+.button[disabled] {
+  opacity: 0.5;
+}

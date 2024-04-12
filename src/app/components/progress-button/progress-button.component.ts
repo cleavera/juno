@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, InputSignal, Output, input } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -7,7 +7,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
   styleUrls: ['./progress-button.component.css'],
   templateUrl: './progress-button.component.html'
 })
-export class ProgressButton {
+export class ProgressButtonComponent {
+  public disabled: InputSignal<boolean> = input(false);
+
   @Output()
   public progress: EventEmitter<void> = new EventEmitter<void>();
 

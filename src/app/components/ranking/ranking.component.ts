@@ -4,10 +4,10 @@ import { Name } from '../../classes/name';
 import { randomise } from '../../helpers/randomise.helper';
 import { DraggableList } from '../draggable-list/draggable-list.component';
 import { InfoComponent } from '../info/info.component';
-import { ProgressButton } from '../progress-button/progress-button.component';
+import { ProgressButtonComponent } from '../progress-button/progress-button.component';
 
 @Component({
-  imports: [DraggableList, InfoComponent, ProgressButton],
+  imports: [DraggableList, InfoComponent, ProgressButtonComponent],
   selector: 'app-ranking',
   standalone: true,
   styleUrls: ['./ranking.component.css'],
