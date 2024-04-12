@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output, inject } from '@angular/core';
 import { League } from '../../classes/league';
 import { LeagueSerialiserService } from '../../services/league-serialiser.service';
-import { InfoComponent } from '../info/info.component';
 import { ActionButtonComponent } from '../action-button/action-button.component';
+import { InfoComponent } from '../info/info.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, HostBinding, Input, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, HostBinding, Input } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { interval } from 'rxjs';
 import { Round } from '../../classes/round';

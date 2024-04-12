@@ -3,10 +3,10 @@ import { HeadToHead } from '../classes/head-to-head';
 import { League } from '../classes/league';
 import { Name } from '../classes/name';
 import { Round } from '../classes/round';
+import { RoundType } from '../constants/round-type.constant';
+import { randomise } from '../helpers/randomise.helper';
 import { PersistenceService } from './persistence.service';
 import { RoundSerialiserService } from './round-serialiser.service';
-import { shuffle } from '../helpers/randomise.helper';
-import { RoundType } from '../constants/round-type.constant';
 
 @Injectable()
 export class RoundFactory {
@@ -39,7 +39,7 @@ export class RoundFactory {
   public faceOff(roundCount: number, league: League): Round {
     roundCount = Math.min(roundCount, league.names.length / 2);
 
-    const indexes: Array<number> = shuffle([...Array(roundCount).keys()]);
+    const indexes: Array<number> = randomise([...Array(roundCount).keys()]);
     const names: Array<Name> = league.ranking();
     const out: Array<HeadToHead> = [];
 
@@ -53,10 +53,10 @@ export class RoundFactory {
   public weightedDistribution(roundCount: number, league: League): Round {
     roundCount = Math.min(roundCount, Math.floor(league.names.length / 30));
 
-    const g1: Array<Name> = shuffle(league.ranking().slice(0, roundCount * 2));
-    const g2: Array<Name> = shuffle(league.ranking().slice(roundCount * 2, (roundCount * (2 + 4))));
-    const g3: Array<Name> = shuffle(league.ranking().slice((roundCount * (2 + 4)), (roundCount * (2 + 4 + 6))));
-    const g4: Array<Name> = shuffle(league.ranking().slice((roundCount * (2 + 4 + 6)), league.names.length));
+    const g1: Array<Name> = randomise(league.ranking().slice(0, roundCount * 2));
+    const g2: Array<Name> = randomise(league.ranking().slice(roundCount * 2, (roundCount * (2 + 4))));
+    const g3: Array<Name> = randomise(league.ranking().slice((roundCount * (2 + 4)), (roundCount * (2 + 4 + 6))));
+    const g4: Array<Name> = randomise(league.ranking().slice((roundCount * (2 + 4 + 6)), league.names.length));
 
     const out: Array<HeadToHead> = [];
 

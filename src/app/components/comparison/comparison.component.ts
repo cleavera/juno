@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, inject } from '
 import { Comparison } from '../../classes/comparison';
 import { League } from '../../classes/league';
 import { ComparisonFactory } from '../../services/comparison.factory';
-import { ComparisonImportComponent } from '../comparison-import/comparison-import.component';
 import { CombinationValueComponent } from '../combination-value/combination-value.component';
+import { ComparisonImportComponent } from '../comparison-import/comparison-import.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
