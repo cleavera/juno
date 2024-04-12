@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, inject, input } from '@angular/core';
 import { League } from '../../classes/league';
 import { LeagueSerialiserService } from '../../services/league-serialiser.service';
 import { ActionButtonComponent } from '../action-button/action-button.component';
@@ -12,15 +12,14 @@ import { ActionButtonComponent } from '../action-button/action-button.component'
   templateUrl: './league-export.component.html',
 })
 export class LeagueExportComponent {
-  @Input({ required: true })
-  public league!: League;
+  public league: InputSignal<League> = input.required<League>();
 
   public serialisedLeague!: string;
 
   public leagueSerialiserService: LeagueSerialiserService = inject(LeagueSerialiserService);
 
   public ngOnChanges(): void {
-    this.serialisedLeague = this.leagueSerialiserService.serialise(this.league);
+    this.serialisedLeague = this.leagueSerialiserService.serialise(this.league());
   }
 
   public onExport(): void {

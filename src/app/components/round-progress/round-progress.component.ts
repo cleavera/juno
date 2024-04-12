@@ -1,7 +1,8 @@
-import { Component, Input, Signal, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, Signal, computed, input } from '@angular/core';
 import { Round } from '../../classes/round';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { '[style.--progress]': 'progress()' },
   selector: 'app-round-progress',
   standalone: true,
@@ -9,12 +10,11 @@ import { Round } from '../../classes/round';
   templateUrl: './round-progress.component.html',
 })
 export class RoundProgressComponent {
-  @Input({ required: true })
-  public round!: Round;
+  public round: InputSignal<Round> = input.required<Round>();
 
   public progress: Signal<string>;
 
   constructor() {
-    this.progress = computed(() => `${Math.floor(this.round.progress() * 100)}%`);
+    this.progress = computed(() => `${Math.floor(this.round().progress() * 100)}%`);
   }
 }

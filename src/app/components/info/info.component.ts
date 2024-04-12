@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, input } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -8,6 +8,5 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   templateUrl: './info.component.html'
 })
 export class InfoComponent {
-  @Input({ required: true })
-  public message!: string;
+  public message: InputSignal<string> = input.required<string>();
 }

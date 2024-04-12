@@ -1,25 +1,23 @@
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, HostBinding, Input, OnChanges } from '@angular/core';
+import { Component, InputSignal, Signal, computed, input } from '@angular/core';
 
 @Component({
+  host: { '[style.--count]': 'count()' },
   imports: [CdkDropList, CdkDrag],
   selector: 'app-draggable-list',
   standalone: true,
   styleUrls: ['./draggable-list.component.css'],
   templateUrl: './draggable-list.component.html'
 })
-export class DraggableList implements OnChanges {
-  @Input({ required: true })
-  public items!: Array<string>;
-
-  @HostBinding('style.--count')
-  public count!: number;
+export class DraggableList {
+  public items: InputSignal<Array<string>> = input.required<Array<string>>();
+  public count: Signal<number>;
   
-  public ngOnChanges(): void {
-    this.count = this.items.length;
+  constructor() {
+    this.count = computed(() => this.items().length);
   }
 
   public drop(event: CdkDragDrop<Array<string>>) {
-    moveItemInArray(this.items, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.items(), event.previousIndex, event.currentIndex);
   }
 }

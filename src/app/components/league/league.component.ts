@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, input } from '@angular/core';
 import { League } from '../../classes/league';
 import { LeagueExportComponent } from '../league-export/league-export.component';
 
@@ -11,6 +11,5 @@ import { LeagueExportComponent } from '../league-export/league-export.component'
   templateUrl: './league.component.html'
 })
 export class LeagueComponent {
-  @Input({ required: true })
-  public league!: League;
+  public league: InputSignal<League> = input.required<League>();
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, InputSignal, Output, Signal, computed, input } from '@angular/core';
 import { HeadToHead } from '../../classes/head-to-head';
 import { Name } from '../../classes/name';
 import { randomise } from '../../helpers/randomise.helper';
@@ -13,24 +13,25 @@ import { InfoComponent } from '../info/info.component';
   templateUrl: './ranking.component.html'
 })
 export class RankingComponent {
-  @Input({ required: true })
-  public headToHead!: HeadToHead;
+  public headToHead: InputSignal<HeadToHead> = input.required<HeadToHead>();
 
   @Output()
   public complete: EventEmitter<void> = new EventEmitter();
 
-  public names!: Array<string>;
+  public names: Signal<Array<string>>;
 
-  public ngOnChanges(): void {
-    this.names = randomise(this.headToHead.names).map((name: Name) => name.name);
+  constructor() {
+    this.names = computed(() => {
+      return randomise(this.headToHead().names).map((name: Name) => name.name)
+    });
   }
 
   public onDone(): void {
-    const orderedNames: Array<Name> = this.names.map((name: string) => {
-      return this.headToHead.find(name)!;
+    const orderedNames: Array<Name> = this.names().map((name: string) => {
+      return this.headToHead().find(name)!;
     });
 
-    this.headToHead.resolve(orderedNames);
+    this.headToHead().resolve(orderedNames);
 
     this.complete.emit();
   }

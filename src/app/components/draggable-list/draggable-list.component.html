@@ -1,5 +1,5 @@
 <ul cdkDropList class="list" (cdkDropListDropped)="drop($event)">
-  @for (item of items; track item) {
+  @for (item of items(); track item) {
     <li class="item" cdkDrag>
       <span class="indicator" role="presentation"></span>
       <p class="label">{{item}}</p>

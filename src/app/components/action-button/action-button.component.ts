@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, InputSignal, Output, input } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -8,8 +8,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   templateUrl: './action-button.component.html'
 })
 export class ActionButtonComponent {
-  @Input({ required: true })
-  public text!: string;
+  public text: InputSignal<string> = input.required<string>();
 
   @Output()
   public activate: EventEmitter<void> = new EventEmitter<void>();
