@@ -25,7 +25,9 @@ export class HeadToHead {
         }
       });
 
-      this.find(name.name)!.rating += adjustment;
+      const centralName: Name = this.find(name.name)!;
+      centralName.rating += adjustment;
+      centralName.plays.update((plays: number) => plays + 1);
     });
 
     this.result = names.map((name: Name) => {

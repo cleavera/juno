@@ -27,7 +27,6 @@ export class LeagueSerialiserService {
   }
 
   private _serialiseName(name: Name): string {
-    return `${name.name.toLowerCase()}:${name.rating.toString(36)}:${name.plays.toString(36)}`;
+    return `${name.name.toLowerCase()}:${name.rating.toString(36)}:${name.plays().toString(36)}`;
   }
-
 }
