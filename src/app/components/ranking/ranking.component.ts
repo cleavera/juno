@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HeadToHead } from '../../classes/head-to-head';
 import { Name } from '../../classes/name';
+import { shuffle } from '../../helpers/randomise.helper';
 import { DraggableList } from '../draggable-list/draggable-list.component';
 import { InfoComponent } from '../info/info.component';
 
@@ -21,7 +22,7 @@ export class RankingComponent {
   public names!: Array<string>;
 
   public ngOnChanges(): void {
-    this.names = this.headToHead.names.sort((_a: Name, _b: Name) => Math.random() - Math.random()).map((name: Name) => name.name);
+    this.names = shuffle(this.headToHead.names).map((name: Name) => name.name);
   }
 
   public onDone(): void {

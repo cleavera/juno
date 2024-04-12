@@ -1,7 +1,7 @@
 import { Name } from './name';
 
 export class HeadToHead {
-  public names: Array<Name>;
+  public names: ReadonlyArray<Name>;
   public result: Array<Name> | null = null;
 
   constructor(names: Array<Name>, result: Array<Name> | null = null) {

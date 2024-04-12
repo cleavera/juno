@@ -1,4 +1,4 @@
-export function shuffle<T>(arr: Array<T>): Array<T> {
+export function shuffle<T>(arr: ReadonlyArray<T>): Array<T> {
   const out: Array<T> = arr.concat();
   let currentIndex: number = out.length;
 

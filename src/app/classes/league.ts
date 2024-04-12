@@ -1,7 +1,7 @@
 import { Name } from './name';
 
 export class League {
-  public names: Array<Name>;
+  public readonly names: ReadonlyArray<Name>;
   public rounds: number;
 
   constructor(names: Array<Name>, rounds: number = 0) {

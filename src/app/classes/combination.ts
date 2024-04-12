@@ -1,11 +1,11 @@
 export class Combination {
-  public name: string;
-  public myRating: number;
-  public theirRating: number; 
-  public combined: number;
-  public total: number;
-  public min: number;
-  public max: number;
+  public readonly name: string;
+  public readonly myRating: number;
+  public readonly theirRating: number; 
+  public readonly combined: number;
+  public readonly total: number;
+  public readonly min: number;
+  public readonly max: number;
 
   constructor(name: string, myRating: number, theirRating: number, combined: number) {
     this.name = name;

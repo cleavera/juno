@@ -1,9 +1,9 @@
 import { Combination } from './combination';
 
 export class Comparison {
-  public combinations: Array<Combination>;
-  public max: number;
-  public min: number;
+  public readonly combinations: ReadonlyArray<Combination>;
+  public readonly max: number;
+  public readonly min: number;
 
   constructor(combinations: Array<Combination>, max: number, min: number) {
     this.combinations = combinations;

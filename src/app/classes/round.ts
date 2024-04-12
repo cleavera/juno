@@ -2,8 +2,8 @@ import { RoundType } from '../constants/round-type.constant';
 import { HeadToHead } from './head-to-head';
 
 export class Round {
-  public roundType: RoundType;
-  public headToHeads: Array<HeadToHead>;
+  public readonly roundType: RoundType;
+  public readonly headToHeads: ReadonlyArray<HeadToHead>;
 
   constructor(headToHeads: Array<HeadToHead>, roundType: RoundType) {
     this.headToHeads = headToHeads;
