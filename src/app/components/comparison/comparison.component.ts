@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, HostBinding, InputSignal, inject, input } from '@angular/core';
 import { Comparison } from '../../classes/comparison';
 import { League } from '../../classes/league';
@@ -8,7 +7,7 @@ import { ComparisonImportComponent } from '../comparison-import/comparison-impor
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CombinationValueComponent, ComparisonImportComponent, NgIf],
+  imports: [CombinationValueComponent, ComparisonImportComponent],
   selector: 'app-comparison',
   standalone: true,
   styleUrls: ['./comparison.component.css'],

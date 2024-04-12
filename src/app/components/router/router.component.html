@@ -1,16 +1,15 @@
 <app-navigation-bar (navigate)="onNavigate($event)" />
 
-<app-game
-    class="game"
-    *ngIf="isRound()"
-    [league]="league" />
-
-<app-league
-    class="league"
-    *ngIf="isLeague()"
-    [league]="league" />
-
-<app-comparison
-    class="comparison"
-    *ngIf="isComparison()"
-    [league]="league" />
+@if (isRound()) {
+  <app-game
+      class="game"
+      [league]="league" />
+} @else if (isLeague()) {
+  <app-league
+      class="league"
+      [league]="league" />
+} @else if (isComparison()) {
+  <app-comparison
+      class="comparison"
+      [league]="league" />
+}
