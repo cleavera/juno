@@ -7,10 +7,11 @@ import { RoundFactory } from '../../services/round.factory';
 import { FaceOffComponent } from '../face-off/face-off.component';
 import { RankingComponent } from '../ranking/ranking.component';
 import { RoundProgressComponent } from '../round-progress/round-progress.component';
+import { SelectionComponent } from '../selection/selection.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FaceOffComponent, RankingComponent, RoundProgressComponent],
+  imports: [FaceOffComponent, RankingComponent, RoundProgressComponent, SelectionComponent],
   selector: 'app-round',
   standalone: true,
   styleUrls: ['./round.component.css'],
@@ -24,13 +25,15 @@ export class RoundComponent {
   public complete: EventEmitter<void> = new EventEmitter<void>();
 
   public isRanking: Signal<boolean>;
+  public isSelection: Signal<boolean>;
   public isFaceOff: Signal<boolean>;
 
   private readonly _leagueFactory: LeagueFactory = inject(LeagueFactory);
   private readonly _roundFactory: RoundFactory = inject(RoundFactory);
 
   constructor() {
-    this.isRanking = computed(() => this.round().roundType === RoundType.EVEN_DISTRIBUTION || this.round().roundType === RoundType.WEIGHTED_DISTRIBUTION);
+    this.isRanking = computed(() => this.round().roundType === RoundType.EVEN_DISTRIBUTION);
+    this.isSelection = computed(() => this.round().roundType === RoundType.WEIGHTED_DISTRIBUTION);
     this.isFaceOff = computed(() => this.round().roundType === RoundType.FACEOFF);
   }
 

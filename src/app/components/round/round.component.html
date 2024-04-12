@@ -3,6 +3,8 @@
 <div class="container">
   @if (isRanking()) {
     <app-ranking class="ranking" [headToHead]="round().nextMatchup()!" (complete)="onComplete()" />
+  } @else if (isSelection()) {
+    <app-selection class="selection" [headToHead]="round().nextMatchup()!" (complete)="onComplete()" />
   } @else if (isFaceOff()) {
     <app-face-off class="faceOff" [headToHead]="round().nextMatchup()!" (complete)="onComplete()" />
   }

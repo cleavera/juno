@@ -1,0 +1,11 @@
+<app-info message="Pick your favourite {{selectionCount()}} names" />
+
+<ul class="names">
+  @for (name of names(); track name) {
+    <li class="name">
+      <button class="nameButton" [class.isSelected]="selected().has(name)" (click)="onSelect(name)">{{name}}</button>
+    </li>
+  }
+</ul>
+
+<app-progress-button (progress)="onDone()" [disabled]="selected().size < selectionCount()" />
