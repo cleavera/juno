@@ -51,22 +51,11 @@ export class RoundFactory {
   }
 
   public selection(roundCount: number, league: League): Round {
-    roundCount = Math.min(roundCount, Math.floor(league.names.length / 30));
-
-    const g1: Array<Name> = randomise(league.ranking().slice(0, roundCount * 2));
-    const g2: Array<Name> = randomise(league.ranking().slice(roundCount * 2, (roundCount * (2 + 4))));
-    const g3: Array<Name> = randomise(league.ranking().slice((roundCount * (2 + 4)), (roundCount * (2 + 4 + 6))));
-    const g4: Array<Name> = randomise(league.ranking().slice((roundCount * (2 + 4 + 6)), league.names.length));
-
-    const out: Array<HeadToHead> = [];
-
-    for (let i = 0; i < (roundCount * 2); i += 2) {
-      const j: number = i + 1;
-
-      out.push(new HeadToHead([g1[i], g1[j], g2[i], g2[j], g3[i], g3[j], g4[i], g4[j]]));
-    }
-
-    return new Round(out, RoundType.SELECTION);
+    return new Round(this._weightedDistribution(roundCount, league), RoundType.SELECTION);
+  }
+  
+  public ranking(roundCount: number, league: League): Round {
+    return new Round(this._weightedDistribution(roundCount, league), RoundType.RANKING);
   }
 
   public next(league: League): Round {
@@ -80,7 +69,7 @@ export class RoundFactory {
       case 2:
         return this.faceOff(100, league);
       case 3:
-        return this.selection(20, league);
+        return this.ranking(20, league);
       case 4:
         return this.faceOff(50, league);
       default:
@@ -100,5 +89,24 @@ export class RoundFactory {
 
   public store(round: Round): void {
     this.persistenceService.save(RoundFactory.STORAGE_KEY, this.roundSerialiserService.serialise(round));
+  }
+
+  private _weightedDistribution(roundCount: number, league: League): Array<HeadToHead> {
+    roundCount = Math.min(roundCount, Math.floor(league.names.length / 30));
+
+    const g1: Array<Name> = randomise(league.ranking().slice(0, roundCount * 2));
+    const g2: Array<Name> = randomise(league.ranking().slice(roundCount * 2, (roundCount * (2 + 4))));
+    const g3: Array<Name> = randomise(league.ranking().slice((roundCount * (2 + 4)), (roundCount * (2 + 4 + 6))));
+    const g4: Array<Name> = randomise(league.ranking().slice((roundCount * (2 + 4 + 6)), league.names.length));
+
+    const out: Array<HeadToHead> = [];
+
+    for (let i = 0; i < (roundCount * 2); i += 2) {
+      const j: number = i + 1;
+
+      out.push(new HeadToHead([g1[i], g1[j], g2[i], g2[j], g3[i], g3[j], g4[i], g4[j]]));
+    }
+
+    return out;
   }
 }
