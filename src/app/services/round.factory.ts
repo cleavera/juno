@@ -14,7 +14,7 @@ export class RoundFactory {
   private readonly persistenceService: PersistenceService = inject(PersistenceService);
   private readonly roundSerialiserService: RoundSerialiserService = inject(RoundSerialiserService);
 
-  public evenDistribution(size: number, league: League): Round {
+  public starting(size: number, league: League): Round {
     const out: Array<HeadToHead> = [];
     const count: number = Math.ceil(league.names.length / size);
     const names: Array<Name> = league.ranking();
@@ -33,7 +33,7 @@ export class RoundFactory {
       out.push(new HeadToHead(headToHead));
     }
 
-    return new Round(out, RoundType.EVEN_DISTRIBUTION);
+    return new Round(out, RoundType.RANKING);
   }
 
   public faceOff(roundCount: number, league: League): Round {
@@ -50,7 +50,7 @@ export class RoundFactory {
     return new Round(out, RoundType.FACEOFF);
   }
 
-  public weightedDistribution(roundCount: number, league: League): Round {
+  public selection(roundCount: number, league: League): Round {
     roundCount = Math.min(roundCount, Math.floor(league.names.length / 30));
 
     const g1: Array<Name> = randomise(league.ranking().slice(0, roundCount * 2));
@@ -66,7 +66,7 @@ export class RoundFactory {
       out.push(new HeadToHead([g1[i], g1[j], g2[i], g2[j], g3[i], g3[j], g4[i], g4[j]]));
     }
 
-    return new Round(out, RoundType.WEIGHTED_DISTRIBUTION);
+    return new Round(out, RoundType.SELECTION);
   }
 
   public next(league: League): Round {
@@ -74,13 +74,13 @@ export class RoundFactory {
 
     switch (index) {
       case 0:
-        return this.evenDistribution(10, league);
+        return this.starting(10, league);
       case 1:
-        return this.weightedDistribution(30, league);
+        return this.selection(30, league);
       case 2:
         return this.faceOff(100, league);
       case 3:
-        return this.weightedDistribution(20, league);
+        return this.selection(20, league);
       case 4:
         return this.faceOff(50, league);
       default:

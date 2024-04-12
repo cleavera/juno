@@ -1,5 +1,5 @@
 export enum RoundType {
-  WEIGHTED_DISTRIBUTION = 'b',
+  SELECTION = 'b',
   FACEOFF = 'f',
-  EVEN_DISTRIBUTION = 'r'
+  RANKING = 'r'
 }

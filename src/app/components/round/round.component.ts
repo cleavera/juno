@@ -32,8 +32,8 @@ export class RoundComponent {
   private readonly _roundFactory: RoundFactory = inject(RoundFactory);
 
   constructor() {
-    this.isRanking = computed(() => this.round().roundType === RoundType.EVEN_DISTRIBUTION);
-    this.isSelection = computed(() => this.round().roundType === RoundType.WEIGHTED_DISTRIBUTION);
+    this.isRanking = computed(() => this.round().roundType === RoundType.RANKING);
+    this.isSelection = computed(() => this.round().roundType === RoundType.SELECTION);
     this.isFaceOff = computed(() => this.round().roundType === RoundType.FACEOFF);
   }
 
