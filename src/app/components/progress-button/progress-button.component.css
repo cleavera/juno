@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+}
+
+.button {
+  align-items: center;
+  background: var(--color-continue);
+  box-shadow: 0 0 5px var(--color-shadow);
+  box-sizing: border-box;
+  color: var(--color-font-invert);
+  cursor: pointer;
+  display: flex;
+  flex: 1 1 auto;
+  font-size: 1.5rem;
+  height: 4.5rem;
+  justify-content: center;
+}
