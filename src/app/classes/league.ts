@@ -15,6 +15,6 @@ export class League {
   }
 
   public ranking(): Array<Name> {
-    return this.names.concat().sort((a: Name, b: Name) => b.rating - a.rating);
+    return this.names.concat().sort((a: Name, b: Name) => b.rating() - a.rating());
   }
 }

@@ -11,15 +11,15 @@ export class ComparisonFactory {
     let min: number = Number.MAX_SAFE_INTEGER;
 
     const combinations: Array<Combination> = myLeague.names.map((name: Name) => {
-      max = Math.max(max, name.rating);
-      min = Math.min(min, name.rating);
+      max = Math.max(max, name.rating());
+      min = Math.min(min, name.rating());
 
       for (let theirName of theirLeague.names) {
-        max = Math.max(max, theirName.rating);
-        min = Math.min(min, theirName.rating);
+        max = Math.max(max, theirName.rating());
+        min = Math.min(min, theirName.rating());
       
         if (name.name === theirName.name) {
-          return new Combination(name.name, name.rating, theirName.rating, this._calculateTotal(name.rating, theirName.rating));
+          return new Combination(name.name, name.rating(), theirName.rating(), this._calculateTotal(name.rating(), theirName.rating()));
         }
       }
 

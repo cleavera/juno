@@ -26,7 +26,7 @@ export class HeadToHead {
       });
 
       const centralName: Name = this.find(name.name)!;
-      centralName.rating += adjustment;
+      centralName.rating.update((rating: number) => rating + adjustment);
       centralName.plays.update((plays: number) => plays + 1);
     });
 
@@ -40,7 +40,7 @@ export class HeadToHead {
   }
 
   private ratingAdjustment(self: Name, other: Name, actualScore: 0 | 1): number {
-    const expectedProbability = 1 / (1 + 10 ** ((other.rating - self.rating) / 400));
+    const expectedProbability = 1 / (1 + 10 ** ((other.rating() - self.rating()) / 400));
 
     return Math.round(32 * (actualScore - expectedProbability));
   }
