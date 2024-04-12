@@ -70,8 +70,7 @@ export class RoundFactory {
   }
 
   public next(league: League): Round {
-    const index = league.rounds % 5;
-    console.log(index);
+    const index = league.rounds() % 5;
 
     switch (index) {
       case 0:

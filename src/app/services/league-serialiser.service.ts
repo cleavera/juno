@@ -17,7 +17,7 @@ export class LeagueSerialiserService {
   }
 
   public serialise(league: League): string {
-    return league.names.map((name: Name) => this._serialiseName(name)).join(';') + `|${league.rounds.toString(36)}`;
+    return league.names.map((name: Name) => this._serialiseName(name)).join(';') + `|${league.rounds().toString(36)}`;
   }
 
   private _deserialiseName(name: string): Name {

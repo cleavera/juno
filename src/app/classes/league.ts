@@ -1,12 +1,13 @@
+import { WritableSignal, signal } from '@angular/core';
 import { Name } from './name';
 
 export class League {
   public readonly names: ReadonlyArray<Name>;
-  public rounds: number;
+  public rounds: WritableSignal<number>;
 
   constructor(names: Array<Name>, rounds: number = 0) {
     this.names = names;
-    this.rounds = rounds;
+    this.rounds = signal(rounds);
   }
 
   public find(name: string): Name | null {

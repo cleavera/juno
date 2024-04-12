@@ -39,7 +39,7 @@ export class RoundComponent {
     this._leagueFactory.store(this.league);
 
     if (this.round.isComplete()) {
-      this.league.rounds += 1;
+      this.league.rounds.update((rounds: number) => rounds + 1);
       this.round = this._roundFactory.next(this.league);
     }
 
