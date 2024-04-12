@@ -1,5 +1,4 @@
 import { Injectable, inject } from '@angular/core';
-
 import { League } from '../classes/league';
 import { Name } from '../classes/name';
 import { NAMES } from '../constants/names.constant';

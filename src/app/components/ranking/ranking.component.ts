@@ -31,7 +31,7 @@ export class RankingComponent {
       return this.headToHead().find(name)!;
     });
 
-    this.headToHead().resolve(orderedNames);
+    this.headToHead().resolve(orderedNames.map((name: Name) => [name]));
 
     this.complete.emit();
   }

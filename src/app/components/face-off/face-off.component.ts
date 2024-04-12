@@ -30,12 +30,12 @@ export class FaceOffComponent {
   }
 
   public onName1(): void {
-    this.headToHead().resolve(this.names());
+    this.headToHead().resolve([[this.names()[0]], [this.names()[1]]]);
     this.complete.emit();
   }
 
   public onName2(): void {
-    this.headToHead().resolve(this.names().reverse());
+    this.headToHead().resolve([[this.names()[1]], [this.names()[0]]]);
     this.complete.emit();
   }
 }

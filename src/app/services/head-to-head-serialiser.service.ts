@@ -12,7 +12,7 @@ export class HeadToHeadSerialiserService {
     }
 
     let names: Array<Name> = [];
-    let result: Array<Name> = [];
+    let result: Array<Array<Name>> = [];
 
     serialised.split(':').map((nameAndRank: string) => {
       const [nameString, rank] = nameAndRank.split('#');
@@ -21,7 +21,13 @@ export class HeadToHeadSerialiserService {
       names.push(name);
 
       if (rank !== '~') {
-        result[parseInt(rank, 10)] = name;
+        const i = parseInt(rank, 10);
+
+        if (!result[i]) {
+          result[i] = [name];
+        } else {
+          result[i].push(name);
+        }
       }
     });
 
@@ -33,7 +39,7 @@ export class HeadToHeadSerialiserService {
   }
 
   public serialise(headToHead: HeadToHead): string {
-    const result: ReadonlyArray<Name> | null = headToHead.result();
+    const result: ReadonlyArray<ReadonlyArray<Name>> | null = headToHead.result();
 
     if (result === null) {
       return headToHead.names.map((name: Name) => {
@@ -41,8 +47,10 @@ export class HeadToHeadSerialiserService {
       }).join(':');
     }
 
-    return result.map((name: Name, index: number) => {
-      return `${name.name.toLowerCase()}#${index}`;
+    return result.map((names: ReadonlyArray<Name>, index: number) => {
+      return names.map((name: Name) => {
+        return `${name.name.toLowerCase()}#${index}`;
+      });
     }).join(':');
   }
 }
