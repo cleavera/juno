@@ -26,20 +26,6 @@
   right: 5px;
 }
 
-:host::after {
-  background: linear-gradient(90deg, rgba(0,0,0,0.1), rgba(0,0,0,0));
-  bottom: 5px;
-  content: '';
-  position: absolute;
-  left: 5px;
-  right: 5px;
-  top: 5px;
-}
-
-:host.isMine::after {
-  background: linear-gradient(270deg, rgba(0,0,0,0.1), rgba(0,0,0,0));
-}
-
 .label {
   color: var(--color-font-invert);
   font-weight: bold;
