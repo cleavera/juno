@@ -2,14 +2,14 @@ import { Name } from './name';
 
 export class HeadToHead {
   public names: ReadonlyArray<Name>;
-  public result: Array<Name> | null = null;
+  public result: ReadonlyArray<Name> | null = null;
 
-  constructor(names: Array<Name>, result: Array<Name> | null = null) {
+  constructor(names: ReadonlyArray<Name>, result: ReadonlyArray<Name> | null = null) {
     this.names = names;
     this.result = result;
   }
 
-  public resolve(names: Array<Name>): void {
+  public resolve(names: ReadonlyArray<Name>): void {
     names.forEach((name: Name, index: number) => {
       let adjustment: number = 0;
 
