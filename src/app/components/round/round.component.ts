@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, InputSignal, Output, inject, input } from '@angular/core';
 import { League } from '../../classes/league';
 import { Round } from '../../classes/round';
 import { RoundType } from '../../constants/round-type.constant';
@@ -18,31 +18,29 @@ import { RoundProgressComponent } from '../round-progress/round-progress.compone
   templateUrl: './round.component.html'
 })
 export class RoundComponent {
-  @Input({ required: true })
-  public round!: Round;
+  public round: InputSignal<Round> = input.required<Round>();
+  public league: InputSignal<League> = input.required<League>();
 
-  @Input({ required: true })
-  public league!: League;
+  @Output()
+  public complete: EventEmitter<void> = new EventEmitter<void>();
 
   private readonly _leagueFactory: LeagueFactory = inject(LeagueFactory);
   private readonly _roundFactory: RoundFactory = inject(RoundFactory);
 
   public isRanking(): boolean {
-    return this.round.roundType === RoundType.EVEN_DISTRIBUTION || this.round.roundType === RoundType.WEIGHTED_DISTRIBUTION;
+    return this.round().roundType === RoundType.EVEN_DISTRIBUTION || this.round().roundType === RoundType.WEIGHTED_DISTRIBUTION;
   }
 
   public isFaceOff(): boolean {
-    return this.round.roundType === RoundType.FACEOFF;
+    return this.round().roundType === RoundType.FACEOFF;
   }
 
   public onComplete(): void {
-    this._leagueFactory.store(this.league);
+    this._leagueFactory.store(this.league());
+    this._roundFactory.store(this.round());
 
-    if (this.round.isComplete()) {
-      this.league.rounds.update((rounds: number) => rounds + 1);
-      this.round = this._roundFactory.next(this.league);
+    if (this.round().isComplete()) {
+      this.complete.emit();
     }
-
-    this._roundFactory.store(this.round);
   }
 }

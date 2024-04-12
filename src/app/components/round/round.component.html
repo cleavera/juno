@@ -1,7 +1,6 @@
-<app-round-progress class="progress" [round]="round" />
+<app-round-progress class="progress" [round]="round()" />
 
 <div class="container">
-  <app-ranking class="ranking" *ngIf="isRanking()" [headToHead]="round.nextMatchup()!" (complete)="onComplete()" />
-
-  <app-face-off class="faceOff" *ngIf="isFaceOff()" [headToHead]="round.nextMatchup()!" (complete)="onComplete()" />
+  <app-ranking class="ranking" *ngIf="isRanking()" [headToHead]="round().nextMatchup()!" (complete)="onComplete()" />
+  <app-face-off class="faceOff" *ngIf="isFaceOff()" [headToHead]="round().nextMatchup()!" (complete)="onComplete()" />
 </div>
