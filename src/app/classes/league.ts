@@ -3,7 +3,7 @@ import { Name } from './name';
 
 export class League {
   public readonly names: ReadonlyArray<Name>;
-  public rounds: WritableSignal<number>;
+  public readonly rounds: WritableSignal<number>;
 
   constructor(names: Array<Name>, rounds: number = 0) {
     this.names = names;

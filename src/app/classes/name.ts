@@ -2,8 +2,8 @@ import { WritableSignal, signal } from '@angular/core';
 
 export class Name {
   public readonly name: string;
-  public rating: WritableSignal<number>;
-  public plays: WritableSignal<number>;
+  public readonly rating: WritableSignal<number>;
+  public readonly plays: WritableSignal<number>;
 
   constructor(name: string, rating: number, plays: number) {
     this.name = name;

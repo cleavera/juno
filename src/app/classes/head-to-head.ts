@@ -2,8 +2,8 @@ import { WritableSignal, signal } from '@angular/core';
 import { Name } from './name';
 
 export class HeadToHead {
-  public names: ReadonlyArray<Name>;
-  public result: WritableSignal<ReadonlyArray<Name> | null>;
+  public readonly names: ReadonlyArray<Name>;
+  public readonly result: WritableSignal<ReadonlyArray<Name> | null>;
 
   constructor(names: ReadonlyArray<Name>, result: ReadonlyArray<Name> | null = null) {
     this.names = names;
