@@ -9,4 +9,8 @@ export class PersistenceService {
   public load(key: string): string | null {
     return localStorage.getItem(key) ?? null;
   }
+
+  public clear(): void {
+    localStorage.clear();
+  }
 }
