@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, InputSignal, Output, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, OutputEmitterRef, input, output } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,9 +9,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, InputSignal, Output, 
 })
 export class ActionButtonComponent {
   public text: InputSignal<string> = input.required<string>();
-
-  @Output()
-  public activate: EventEmitter<void> = new EventEmitter<void>();
+  public activate: OutputEmitterRef<void> = output<void>();
 
   public onClick(): void {
     this.activate.emit();

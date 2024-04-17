@@ -1,4 +1,4 @@
-import { Component, EventEmitter, InputSignal, Output, Signal, computed, input } from '@angular/core';
+import { Component, InputSignal, OutputEmitterRef, Signal, computed, input, output } from '@angular/core';
 import { HeadToHead } from '../../classes/head-to-head';
 import { Name } from '../../classes/name';
 import { randomise } from '../../helpers/randomise.helper';
@@ -15,9 +15,7 @@ import { ProgressButtonComponent } from '../progress-button/progress-button.comp
 })
 export class RankingComponent {
   public headToHead: InputSignal<HeadToHead> = input.required<HeadToHead>();
-
-  @Output()
-  public complete: EventEmitter<void> = new EventEmitter();
+  public complete: OutputEmitterRef<void> = output<void>();
 
   public names: Signal<Array<string>>;
 

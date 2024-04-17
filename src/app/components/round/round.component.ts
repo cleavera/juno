@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, InputSignal, Output, Signal, computed, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, OutputEmitterRef, Signal, computed, inject, input, output } from '@angular/core';
 import { League } from '../../classes/league';
 import { Round } from '../../classes/round';
 import { RoundType } from '../../constants/round-type.constant';
@@ -20,9 +20,7 @@ import { SelectionComponent } from '../selection/selection.component';
 export class RoundComponent {
   public round: InputSignal<Round> = input.required<Round>();
   public league: InputSignal<League> = input.required<League>();
-
-  @Output()
-  public complete: EventEmitter<void> = new EventEmitter<void>();
+  public complete: OutputEmitterRef<void> = output<void>();
 
   public isRanking: Signal<boolean>;
   public isSelection: Signal<boolean>;

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OutputEmitterRef, output } from '@angular/core';
 import { States } from '../../constants/states.constant';
 import { LogoComponent } from '../logo/logo.component';
 
@@ -11,8 +11,7 @@ import { LogoComponent } from '../logo/logo.component';
   templateUrl: './navigation-bar.component.html'
 })
 export class NavigationBarComponent {
-  @Output()
-  public navigate: EventEmitter<States> = new EventEmitter();
+  public navigate: OutputEmitterRef<States> = output<States>();
 
   public onRound(): void {
     this.navigate.emit(States.ROUND);

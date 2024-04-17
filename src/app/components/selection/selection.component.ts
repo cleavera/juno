@@ -1,4 +1,4 @@
-import { Component, EventEmitter, InputSignal, Output, Signal, WritableSignal, computed, input, signal } from '@angular/core';
+import { Component, InputSignal, OutputEmitterRef, Signal, WritableSignal, computed, input, output, signal } from '@angular/core';
 import { HeadToHead } from '../../classes/head-to-head';
 import { Name } from '../../classes/name';
 import { randomise } from '../../helpers/randomise.helper';
@@ -14,9 +14,7 @@ import { ProgressButtonComponent } from '../progress-button/progress-button.comp
 })
 export class SelectionComponent {
   public headToHead: InputSignal<HeadToHead> = input.required<HeadToHead>();
-
-  @Output()
-  public complete: EventEmitter<void> = new EventEmitter();
+  public complete: OutputEmitterRef<void> = output<void>();
 
   public names: Signal<Array<string>>;
   public selected: WritableSignal<Set<string>>;

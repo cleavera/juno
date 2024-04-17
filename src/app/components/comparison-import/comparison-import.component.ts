@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OutputEmitterRef, inject, output } from '@angular/core';
 import { League } from '../../classes/league';
 import { LeagueSerialiserService } from '../../services/league-serialiser.service';
 import { ActionButtonComponent } from '../action-button/action-button.component';
@@ -13,8 +13,7 @@ import { InfoComponent } from '../info/info.component';
   templateUrl: './comparison-import.component.html'
 })
 export class ComparisonImportComponent {
-  @Output()
-  public import: EventEmitter<League> = new EventEmitter<League>();
+  public import: OutputEmitterRef<League> = output<League>();
 
   private _leageueSerialiserService: LeagueSerialiserService = inject(LeagueSerialiserService);
 

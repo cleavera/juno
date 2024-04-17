@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, InputSignal, Output, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, OutputEmitterRef, input, output } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,9 +9,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, InputSignal, Output, 
 })
 export class ProgressButtonComponent {
   public disabled: InputSignal<boolean> = input(false);
-
-  @Output()
-  public progress: EventEmitter<void> = new EventEmitter<void>();
+  public progress: OutputEmitterRef<void> = output<void>();
 
   public onDone(): void {
     this.progress.emit();
