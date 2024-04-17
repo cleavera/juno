@@ -4,7 +4,7 @@ import { League } from '../classes/league';
 import { Name } from '../classes/name';
 import { capitalise } from '../helpers/capitalise.helper';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class HeadToHeadSerialiserService {
   public deserialise(serialised: string, league: League): HeadToHead {
     if (serialised === '') {

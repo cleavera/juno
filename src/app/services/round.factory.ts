@@ -8,7 +8,7 @@ import { randomise } from '../helpers/randomise.helper';
 import { PersistenceService } from './persistence.service';
 import { RoundSerialiserService } from './round-serialiser.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RoundFactory {
   private static readonly STORAGE_KEY: string = 'round';
   private readonly persistenceService: PersistenceService = inject(PersistenceService);

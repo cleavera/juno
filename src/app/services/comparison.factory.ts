@@ -4,7 +4,7 @@ import { Comparison } from '../classes/comparison';
 import { League } from '../classes/league';
 import { Name } from '../classes/name';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ComparisonFactory {
   public create(myLeague: League, theirLeague: League): Comparison {
     let max: number = 0;

@@ -5,7 +5,7 @@ import { NAMES } from '../constants/names.constant';
 import { LeagueSerialiserService } from './league-serialiser.service';
 import { PersistenceService } from './persistence.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LeagueFactory {
   private static readonly STORAGE_KEY: string = 'league';
   private readonly persistenceService: PersistenceService = inject(PersistenceService);

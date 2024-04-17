@@ -9,7 +9,7 @@ function isRoundType(value: any): value is RoundType {
   return Object.values(RoundType).includes(value);
 }
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RoundSerialiserService {
   private readonly _headToHeadSerialiserService: HeadToHeadSerialiserService = inject(HeadToHeadSerialiserService);
 

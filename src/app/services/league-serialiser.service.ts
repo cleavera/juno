@@ -3,7 +3,7 @@ import { League } from '../classes/league';
 import { Name } from '../classes/name';
 import { capitalise } from '../helpers/capitalise.helper';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LeagueSerialiserService {
   public deserialise(serialised: string): League {
     if (serialised === '') {
