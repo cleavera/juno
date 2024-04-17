@@ -1,12 +1,21 @@
-@if (comparison) {
+@if (comparison(); as comp) {
   <ol class="combinations">
-    @for (combination of comparison.combinations; track combination) {
+    @for (combination of comp.combinations; track combination) {
       <li class="combination">
-        <app-combination-value class="myRating" [isMine]="true" [minRating]="comparison.min" [maxRating]="comparison.max" [rating]="combination.myRating" />
+        <app-combination-value 
+          class="myRating"
+          [isMine]="true"
+          [minRating]="comp.min"
+          [maxRating]="comp.max"
+          [rating]="combination.myRating" />
         <span class="indicator" role="presentation"></span>
         <p class="name">{{combination.name}}</p>
         <span class="indicator" role="presentation"></span>
-        <app-combination-value class="theirRating" [minRating]="comparison.min" [maxRating]="comparison.max" [rating]="combination.theirRating" />
+        <app-combination-value 
+          class="theirRating"
+          [minRating]="comp.min"
+          [maxRating]="comp.max"
+          [rating]="combination.theirRating" />
       </li>
     }
   </ol>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, InputSignal, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, Signal, WritableSignal, computed, inject, input, signal } from '@angular/core';
 import { Comparison } from '../../classes/comparison';
 import { League } from '../../classes/league';
 import { ComparisonFactory } from '../../services/comparison.factory';
@@ -7,6 +7,9 @@ import { ComparisonImportComponent } from '../comparison-import/comparison-impor
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[style.--comparison-max]': 'max()'
+  },
   imports: [CombinationValueComponent, ComparisonImportComponent],
   selector: 'app-comparison',
   standalone: true,
@@ -16,15 +19,17 @@ import { ComparisonImportComponent } from '../comparison-import/comparison-impor
 export class ComparisonComponent {
   public league: InputSignal<League> = input.required<League>();
 
-  public comparison: Comparison | null = null;
-
-  @HostBinding('style.--comparison-max')
-  public max: number | null = null;
+  public comparison: WritableSignal<Comparison | null>;
+  public max: Signal<number | null>;
 
   private _comparisonFactory: ComparisonFactory = inject(ComparisonFactory);
 
+  constructor() {
+    this.comparison = signal(null);
+    this.max = computed(() => this.comparison()?.max ?? null);
+  }
+
   public onImport(league: League): void {
-    this.comparison = this._comparisonFactory.create(this.league(), league);
-    this.max = this.comparison.max;
+    this.comparison.set(this._comparisonFactory.create(this.league(), league));
   }
 }
