@@ -1,0 +1,45 @@
+<svg
+   width="512mm"
+   height="512mm"
+   viewBox="0 0 512 512"
+   version="1.1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient2"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#db6177;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+      <stop
+         style="stop-color:#cc14ba;stop-opacity:1;"
+         offset="1"
+         id="stop3" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2"
+       id="linearGradient3"
+       x1="3.4272671e-06"
+       y1="256"
+       x2="512"
+       y2="256"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99179943,0,0,0.99179936,2.099352,2.0993535)" />
+  </defs>
+    <circle
+       style="fill:url(#linearGradient3);fill-opacity:1;stroke:#000000;stroke-width:4.46104;stroke-dasharray:none;stroke-opacity:1"
+       id="path1"
+       cx="255.99998"
+       cy="255.99998"
+       r="253.76949" />
+      <path
+         d="m 404.8316,84.595133 q 0,12.6273 -5.47183,18.940947 -5.05092,6.31365 -16.8364,6.31365 -0.84182,8.83911 -3.78819,30.72643 -4.2091,29.4637 -4.63001,32.83098 -37.46099,279.06334 -156.15761,279.06334 -34.93553,0 -54.7183,-19.78277 -19.36186,-19.78277 -19.36186,-49.66738 0,-53.45558 45.45828,-94.28385 45.45828,-41.24918 119.53844,-68.18742 4.63001,-29.88461 7.15547,-53.45557 l 7.57638,-63.55741 q -25.2546,-2.52546 -47.14192,-2.52546 -58.50649,0 -86.28655,11.36457 -27.78006,11.36457 -27.78006,37.04008 0,12.6273 8.4182,27.35915 2.52546,4.2091 2.52546,8.83911 0,8.83911 -9.26002,15.99458 -8.83911,6.73456 -19.36186,6.73456 -13.46912,0 -20.62459,-11.36457 -11.78548,-19.36186 -11.78548,-45.03737 0,-101.018398 176.7822,-101.018398 51.35102,0 91.75838,10.10184 23.99187,5.892741 23.99187,23.570961 z M 223.41939,407.43311 q 20.62459,0 41.24918,-31.14734 20.62459,-31.14735 36.19826,-109.0157 -102.70204,45.03737 -102.70204,110.27843 0,14.31094 6.73456,22.30823 6.73456,7.57638 18.52004,7.57638 z"
+         id="text1"
+         style="font-size:420.91px;font-family:Pacifico;-inkscape-font-specification:Pacifico;fill:#ffffff;stroke:#000000;stroke-width:4.38447"
+         />
+</svg>
