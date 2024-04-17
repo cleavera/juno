@@ -33,7 +33,7 @@ export class RoundFactory {
       out.push(new HeadToHead(headToHead));
     }
 
-    return new Round(out, RoundType.RANKING);
+    return new Round(randomise(out), RoundType.RANKING);
   }
 
   public faceOff(roundCount: number, league: League): Round {
@@ -47,7 +47,7 @@ export class RoundFactory {
       out.push(new HeadToHead([names[indexes[i]], names[indexes[i + 1]]]));
     }
 
-    return new Round(out, RoundType.FACEOFF);
+    return new Round(randomise(out), RoundType.FACEOFF);
   }
 
   public selection(roundCount: number, league: League): Round {
@@ -107,6 +107,6 @@ export class RoundFactory {
       out.push(new HeadToHead([g1[i], g1[j], g2[i], g2[j], g3[i], g3[j], g4[i], g4[j]]));
     }
 
-    return out;
+    return randomise(out);
   }
 }
