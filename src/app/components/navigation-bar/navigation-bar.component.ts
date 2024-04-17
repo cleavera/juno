@@ -7,7 +7,7 @@ import { LogoComponent } from '../logo/logo.component';
   imports: [LogoComponent],
   selector: 'app-navigation-bar',
   standalone: true,
-  styleUrls: ['./navigation-bar.component.css'],
+  styleUrl: './navigation-bar.component.css',
   templateUrl: './navigation-bar.component.html'
 })
 export class NavigationBarComponent {

@@ -10,7 +10,7 @@ import { ProgressButtonComponent } from '../progress-button/progress-button.comp
   imports: [DraggableList, InfoComponent, ProgressButtonComponent],
   selector: 'app-ranking',
   standalone: true,
-  styleUrls: ['./ranking.component.css'],
+  styleUrl: './ranking.component.css',
   templateUrl: './ranking.component.html'
 })
 export class RankingComponent {

@@ -13,7 +13,7 @@ import { NavigationBarComponent } from '../navigation-bar/navigation-bar.compone
   imports: [ComparisonComponent, LeagueComponent, NavigationBarComponent, GameComponent],
   selector: 'app-router',
   standalone: true,
-  styleUrls: ['./router.component.css'],
+  styleUrl: './router.component.css',
   templateUrl: './router.component.html'
 })
 export class RouterComponent {

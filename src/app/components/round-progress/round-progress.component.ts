@@ -6,7 +6,7 @@ import { Round } from '../../classes/round';
   host: { '[style.--progress]': 'progress()' },
   selector: 'app-round-progress',
   standalone: true,
-  styleUrls: ['./round-progress.component.css'],
+  styleUrl: './round-progress.component.css',
   templateUrl: './round-progress.component.html',
 })
 export class RoundProgressComponent {

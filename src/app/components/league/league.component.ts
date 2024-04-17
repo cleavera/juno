@@ -9,7 +9,7 @@ import { ActionButtonComponent } from '../action-button/action-button.component'
   imports: [ActionButtonComponent, LeagueExportComponent],
   selector: 'app-league',
   standalone: true,
-  styleUrls: ['./league.component.css'],
+  styleUrl: './league.component.css',
   templateUrl: './league.component.html'
 })
 export class LeagueComponent {

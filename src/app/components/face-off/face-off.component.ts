@@ -8,7 +8,7 @@ import { InfoComponent } from '../info/info.component';
   imports: [InfoComponent],
   selector: 'app-face-off',
   standalone: true,
-  styleUrls: ['./face-off.component.css'],
+  styleUrl: './face-off.component.css',
   templateUrl: './face-off.component.html'
 })
 export class FaceOffComponent {

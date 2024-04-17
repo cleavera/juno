@@ -9,7 +9,7 @@ import { ProgressButtonComponent } from '../progress-button/progress-button.comp
   imports: [InfoComponent, ProgressButtonComponent],
   selector: 'app-selection',
   standalone: true,
-  styleUrls: ['./selection.component.css'],
+  styleUrl: './selection.component.css',
   templateUrl: './selection.component.html'
 })
 export class SelectionComponent {

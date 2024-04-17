@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, InputSignal, Output, 
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-progress-button',
   standalone: true,
-  styleUrls: ['./progress-button.component.css'],
+  styleUrl: './progress-button.component.css',
   templateUrl: './progress-button.component.html'
 })
 export class ProgressButtonComponent {

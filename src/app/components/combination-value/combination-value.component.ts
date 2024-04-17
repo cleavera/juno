@@ -10,7 +10,7 @@ import { ChangeDetectionStrategy, Component, InputSignal, input } from '@angular
   },
   selector: 'app-combination-value',
   standalone: true,
-  styleUrls: ['./combination-value.component.css'],
+  styleUrl: './combination-value.component.css',
   templateUrl: './combination-value.component.html'
 })
 export class CombinationValueComponent {

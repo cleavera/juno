@@ -14,7 +14,7 @@ import { SelectionComponent } from '../selection/selection.component';
   imports: [FaceOffComponent, RankingComponent, RoundProgressComponent, SelectionComponent],
   selector: 'app-round',
   standalone: true,
-  styleUrls: ['./round.component.css'],
+  styleUrl: './round.component.css',
   templateUrl: './round.component.html'
 })
 export class RoundComponent {

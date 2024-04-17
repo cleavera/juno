@@ -10,7 +10,7 @@ import { ComparisonImportComponent } from '../comparison-import/comparison-impor
   imports: [CombinationValueComponent, ComparisonImportComponent],
   selector: 'app-comparison',
   standalone: true,
-  styleUrls: ['./comparison.component.css'],
+  styleUrl: './comparison.component.css',
   templateUrl: './comparison.component.html'
 })
 export class ComparisonComponent {

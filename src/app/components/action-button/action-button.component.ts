@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, InputSignal, Output, 
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-action-button',
   standalone: true,
-  styleUrls: ['./action-button.component.css'],
+  styleUrl: './action-button.component.css',
   templateUrl: './action-button.component.html'
 })
 export class ActionButtonComponent {

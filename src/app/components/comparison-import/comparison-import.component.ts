@@ -9,7 +9,7 @@ import { InfoComponent } from '../info/info.component';
   imports: [ActionButtonComponent, InfoComponent],
   selector: 'app-comparison-import',
   standalone: true,
-  styleUrls: ['./comparison-import.component.css'],
+  styleUrl: './comparison-import.component.css',
   templateUrl: './comparison-import.component.html'
 })
 export class ComparisonImportComponent {

@@ -6,7 +6,7 @@ import { Component, InputSignal, Signal, computed, input } from '@angular/core';
   imports: [CdkDropList, CdkDrag],
   selector: 'app-draggable-list',
   standalone: true,
-  styleUrls: ['./draggable-list.component.css'],
+  styleUrl: './draggable-list.component.css',
   templateUrl: './draggable-list.component.html'
 })
 export class DraggableList {

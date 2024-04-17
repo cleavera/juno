@@ -9,7 +9,7 @@ import { RoundComponent } from '../round/round.component';
   imports: [RoundComponent],
   selector: 'app-game',
   standalone: true,
-  styleUrls: ['./game.component.css'],
+  styleUrl: './game.component.css',
   templateUrl: './game.component.html'
 })
 export class GameComponent implements OnInit {

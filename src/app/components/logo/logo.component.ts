@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-logo',
   standalone: true,
-  styleUrls: ['./logo.component.css'],
+  styleUrl: './logo.component.css',
   templateUrl: './logo.component.html'
 })
 export class LogoComponent {
